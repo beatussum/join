@@ -1,0 +1,80 @@
+name: Run tests
+on: [pull_request, push]
+
+concurrency:
+  cancel-in-progress: true
+  group: ${{ github.workflow }}-${{ github.ref }}
+
+permissions:
+  checks: write
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Install the dependencies of shellspec
+        run: sudo apt-get install -qy kcov
+
+      - name: Download shellspec
+        run: wget -O - https://github.com/shellspec/shellspec/archive/refs/tags/0.28.1.tar.gz | tar -xz
+
+      - name: Install shellspec
+        working-directory: shellspec-0.28.1
+        run: sudo make install
+
+      - name: Checkout
+        uses: actions/checkout@v4.1.7
+        with:
+          path: join
+
+      - name: Compute code coverage and runs tests
+        run: make coverage
+        continue-on-error: true
+        working-directory: join
+
+      - name: Upload coverage artifact
+        uses: actions/upload-artifact@v4.3.3
+        with:
+          name: coverage
+          path: join/build/coverage
+
+      - name: Upload report artifact
+        uses: actions/upload-artifact@v4.3.3
+        with:
+          name: report
+          path: join/build/report
+
+  upload-coverage-report:
+    name: Upload coverage report
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+      - name: Download coverage report
+        uses: actions/download-artifact@v4.1.7
+        with:
+          name: coverage
+
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v4.5.0
+        with:
+          fail_ci_if_error: true
+          token: ${{ secrets.CODECOV_TOKEN }}
+
+  upload-test-report:
+    name: Upload test report
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+      - name: Download test report
+        uses: actions/download-artifact@v4.1.7
+        with:
+          name: report
+
+      - name: Publish test report
+        uses: mikepenz/action-junit-report@v4.3.1
+        with:
+          report_paths: results_junit.xml
