@@ -1,0 +1,7 @@
+--covdir build/coverage
+--helperdir helper
+--kcov-options "--include-path=src"
+--output j
+--reportdir build/report
+--require spec_helper
+--sandbox

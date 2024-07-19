@@ -14,8 +14,14 @@
 # this program. If not, see <https://www.gnu.org/licenses/>.
 
 
-/build/
+spec_helper_precheck() {
+	minimum_version "0.28.1"
+}
 
-# shellspec
-/.shellspec-local
-/.shellspec-quick.log
+spec_helper_loaded() {
+	:
+}
+
+spec_helper_configure() {
+	:
+}
