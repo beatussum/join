@@ -92,4 +92,35 @@ Describe "actions"
 			The status should be success
 		End
 	End
+
+	Describe '`lines`'
+		Parameters
+			"short option" -l
+			"long option" --lines
+		End
+
+		Describe "with $1"
+			Describe "with not a number"
+				result() {
+					%text
+					#|
+					#|===============================================================================
+					#|Fatal error with the following message:
+					#|  -> `foo` is not a number
+					#|
+					#|./join at line 219:
+					#|
+					#|					die "\`$2\` is not a number"
+					#|
+					#|===============================================================================
+				}
+
+				It
+					When call ./join $2 foo
+					The error should eq "$(result)"
+					The status should be failure
+				End
+			End
+		End
+	End
 End
