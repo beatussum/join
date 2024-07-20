@@ -1,0 +1,5 @@
+fixes:
+  - "join/join/build/join::src/join.in"
+
+github_checks:
+  annotations: true

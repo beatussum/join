@@ -1,0 +1,8 @@
+--execdir @project/build
+--covdir build/coverage
+--helperdir helper
+--kcov-options "--include-pattern=build/join"
+--output j
+--reportdir build/report
+--require spec_helper
+--sandbox
