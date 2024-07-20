@@ -20,7 +20,7 @@ Describe "core"
 	Describe '`die()`'
 		Describe "wihtout message"
 			result() {
-				@cat << EOF
+				@cat <<EOF
 
 ===============================================================================
 Fatal error with the following message:
@@ -28,7 +28,7 @@ Fatal error with the following message:
 
 ${PWD}/join at line 158:
 
-		}
+		print
 
 ===============================================================================
 
@@ -44,7 +44,7 @@ EOF
 
 		Describe "with message"
 			result() {
-				@cat << EOF
+				@cat <<EOF
 
 ===============================================================================
 Fatal error with the following message:
@@ -52,7 +52,7 @@ Fatal error with the following message:
 
 ${PWD}/join at line 158:
 
-		}
+		print
 
 ===============================================================================
 

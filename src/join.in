@@ -19,9 +19,7 @@
 readonly JOIN_SOURCE="${BASH_SOURCE[0]}"
 readonly JOIN_VERSION=@VERSION@
 
-declare -A JOIN_OPTIONS=(
-	[lines]=17
-)
+declare -A JOIN_OPTIONS=( [lines]=17 )
 
 ########
 # CORE #
@@ -32,7 +30,7 @@ die() {
 
 	[[ -z "${msg}" ]] && msg="(none)"
 
-	cat >&2 <<- EOF
+	cat >&2 <<-EOF
 
 	===============================================================================
 	Fatal error with the following message:
@@ -107,7 +105,7 @@ list() {
 ###########
 
 copyright() {
-	cat <<- EOF
+	cat <<-EOF
 	Copyright (C) 2024 Mattéo Rossillol‑‑Laruelle <beatussum@protonmail.com>
 
 	This program is free software: you can redistribute it and/or modify
@@ -146,7 +144,7 @@ join() (
 		export "${pattern}"="${content}"
 	done
 
-	cat <<- "EOF" | gawk -f - -- "${ref_inputs[@]}" || die
+	cat <<-"EOF" | gawk -f - -- "${ref_inputs[@]}" || die
 	BEGIN { FPAT = "@[A-Z]+@" }
 
 	NF == 0 { print }
@@ -163,7 +161,7 @@ join() (
 )
 
 usage() {
-	cat <<- EOF
+	cat <<-EOF
 	Usage: ${JOIN_SOURCE} [options...] [--] [patterns...] [--] [inputs...]
 
 	Options:

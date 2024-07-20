@@ -40,7 +40,7 @@ Describe "actions"
 		}
 
 		It "with $1"
-			When call @join $2
+			When run source "${PWD}/join" $2
 			The output should eq "$(result)"
 			The status should be success
 		End
@@ -53,7 +53,7 @@ Describe "actions"
 		End
 
 		result() {
-			@cat <<- EOF
+			@cat <<-EOF
 			Usage: ${PWD}/join [options...] [--] [patterns...] [--] [inputs...]
 
 			Options:
@@ -88,7 +88,7 @@ Describe "actions"
 		}
 
 		It "with $1"
-			When call @join $2
+			When run source "${PWD}/join" $2
 			The output should eq "$(result)"
 			The status should be success
 		End
@@ -103,13 +103,13 @@ Describe "actions"
 		Describe "with $1"
 			Describe "with not a number"
 				result() {
-					@cat << EOF
+					@cat <<EOF
 
 ===============================================================================
 Fatal error with the following message:
   -> \`foo\` is not a number
 
-${PWD}/join at line 227:
+${PWD}/join at line 225:
 
 					die "\\\`\$2\\\` is not a number"
 
@@ -118,7 +118,7 @@ EOF
 				}
 
 				It
-					When call @join $2 foo
+					When run source "${PWD}/join" $2 foo
 					The error should eq "$(result)"
 					The status should be failure
 				End
@@ -128,7 +128,7 @@ EOF
 
 	Describe "with not a correct option"
 		result() {
-			@cat << EOF
+			@cat <<EOF
 Usage: ${PWD}/join [options...] [--] [patterns...] [--] [inputs...]
 
 Options:
@@ -164,7 +164,7 @@ under certain conditions; type \`${PWD}/join --copyright' for details.
 Fatal error with the following message:
   -> \`--foo\` is not a correct option
 
-${PWD}/join at line 248:
+${PWD}/join at line 246:
 
 				die "\\\`\$1\\\` is not a correct option"
 
@@ -173,29 +173,18 @@ EOF
 		}
 
 		It
-			When call @join --foo
+			When run source "${PWD}/join" --foo
 			The error should eq "$(result)"
 			The status should be failure
 		End
 	End
 
 	It "normal usage"
-		BeforeCall setup
-		AfterCall cleanup
-
-		join() {
-			@join \
-				--lines 0 \
-				-- \
-				HW='"Hello world!"' \
-				FULLD="${TEST_DIR}/full.d" \
-				FULL="${TEST_DIR}/full.d/full_1.txt" \
-				-- \
-				"${TEST_DIR}/template"
-		}
+		BeforeRun setup
+		AfterRun cleanup
 
 		result() {
-			@cat <<- EOF
+			@cat <<-EOF
 			This file is a test template.
 
 			foo@bar.com
@@ -214,22 +203,30 @@ EOF
 			done
 
 			%text
-            #|The string `Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            #|Proin rutrum tincidunt enim eu rutrum.
-            #|Pellentesque pellentesque vestibulum leo tempus porta.
-            #|Cras ultrices consectetur massa, vel imperdiet eros hendrerit vitae.
-            #|Maecenas molestie urna in dui ultricies laoreet.
-            #|Duis luctus erat vel tortor vehicula rhoncus.
-            #|Curabitur id tincidunt arcu, et malesuada ante.
-            #|Ut ac accumsan erat.
-            #|Nam eu risus placerat ante suscipit volutpat et sed orci.
-            #|Nunc eget varius lectus.
-            #|In ullamcorper aliquet ex, at vestibulum lectus mollis in.
-            #|Duis pulvinar viverra sem, et ultrices eros placerat vitae.
-            #|Proin neque sapien, placerat ut sem vitae, iaculis luctus sem.` is a lorem ipsum.
+			#|The string `Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+			#|Proin rutrum tincidunt enim eu rutrum.
+			#|Pellentesque pellentesque vestibulum leo tempus porta.
+			#|Cras ultrices consectetur massa, vel imperdiet eros hendrerit vitae.
+			#|Maecenas molestie urna in dui ultricies laoreet.
+			#|Duis luctus erat vel tortor vehicula rhoncus.
+			#|Curabitur id tincidunt arcu, et malesuada ante.
+			#|Ut ac accumsan erat.
+			#|Nam eu risus placerat ante suscipit volutpat et sed orci.
+			#|Nunc eget varius lectus.
+			#|In ullamcorper aliquet ex, at vestibulum lectus mollis in.
+			#|Duis pulvinar viverra sem, et ultrices eros placerat vitae.
+			#|Proin neque sapien, placerat ut sem vitae, iaculis luctus sem.` is a lorem ipsum.
 		}
 
-		When call join
+		When run source "${PWD}/join" \
+			--lines 0 \
+			-- \
+			HW='"Hello world!"' \
+			FULLD="${TEST_DIR}/full.d" \
+			FULL="${TEST_DIR}/full.d/full_1.txt" \
+			-- \
+			"${TEST_DIR}/template"
+
 		The output should eq "$(result)"
 		The status should be success
 	End

@@ -26,13 +26,13 @@ Describe "helpers"
 		Describe "with a directory"
 			Describe "without file"
 				result() {
-					@cat << EOF
+					@cat <<EOF
 
 ===============================================================================
 Fatal error with the following message:
   -> (none)
 
-${PWD}/join at line 75:
+${PWD}/join at line 73:
 
 	[[ -n "\${ret}" ]] || die
 
@@ -126,13 +126,13 @@ EOF
 
 		Describe "with bad entry"
 			result() {
-				@cat << EOF
+				@cat <<EOF
 
 ===============================================================================
 Fatal error with the following message:
   -> \`\` does not exist
 
-${PWD}/join at line 99:
+${PWD}/join at line 97:
 
 		die "\\\`\${entry}\\\` does not exist"
 
