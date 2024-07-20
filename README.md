@@ -19,7 +19,7 @@
 ## What is join?
 
 [**join**](https://github.com/beatussum/join/) is a small script allowing to replace patterns in files by the content of other files.
-This script is licensed under GPL-3 or any later version).
+This script is licensed under GPL-3 or any later version.
 
 ## Building
 
