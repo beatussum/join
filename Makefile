@@ -21,6 +21,7 @@ PREFIX	?= /usr/local
 
 BUILDDIR	?= build
 
+CHMOD			?= chmod +x
 INSTALLEXECCMD	?= install -D -m0755
 INSTALLMKDIRCMD	?= install -d
 RMDIRCMD		?= rm -fr
@@ -35,6 +36,7 @@ $(BUILDDIR):
 
 $(BUILDDIR)/join: src/join.in $(BUILDDIR)
 	$(SEDCMD) "s/@VERSION@/$(VERSION)/g" $< > $@
+	$(CHMOD) $@
 
 .PHONY: clean
 clean:
