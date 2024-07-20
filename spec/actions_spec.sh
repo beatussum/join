@@ -108,7 +108,7 @@ Describe "actions"
 					#|Fatal error with the following message:
 					#|  -> `foo` is not a number
 					#|
-					#|./join at line 219:
+					#|./join at line 224:
 					#|
 					#|					die "\`$2\` is not a number"
 					#|
@@ -162,7 +162,7 @@ Describe "actions"
             #|Fatal error with the following message:
             #|  -> `--foo` is not a correct option
             #|
-            #|./join at line 240:
+            #|./join at line 245:
             #|
             #|				die "\`$1\` is not a correct option"
             #|

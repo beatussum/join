@@ -89,10 +89,16 @@ EOF
 
 			Describe "with files"
 				result() {
+					local -a ret
+
 					for i in {1..20}; do
-						echo "${TEST_DIR}/full.d/empty_${i}.txt"
-						echo "${TEST_DIR}/full.d/full_${i}.txt"
+						ret+=(
+							"${TEST_DIR}/full.d/empty_${i}.txt"
+							"${TEST_DIR}/full.d/full_${i}.txt"
+						)
 					done
+
+					echo "${ret[@]}"
 				}
 
 				It
@@ -123,7 +129,7 @@ EOF
 Fatal error with the following message:
   -> \`\` does not exist
 
-${PWD}/join at line 93:
+${PWD}/join at line 96:
 
 		die "\\\`\${entry}\\\` does not exist"
 

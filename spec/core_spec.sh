@@ -28,7 +28,7 @@ Fatal error with the following message:
 
 ${PWD}/join at line 158:
 
-	cat <<- EOF
+	}
 
 ===============================================================================
 
@@ -52,7 +52,7 @@ Fatal error with the following message:
 
 ${PWD}/join at line 158:
 
-	cat <<- EOF
+	}
 
 ===============================================================================
 

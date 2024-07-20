@@ -85,13 +85,18 @@ get_content_of() {
 list() {
 	local entry="$1"
 
+	local -a ret
+
 	if [[ -d "${entry}" ]]; then
-		find "${entry}" -maxdepth 1 -mindepth 1 -type f || die
+		ret=( $(find "${entry}" -maxdepth 1 -mindepth 1 -type f) ) || die
+		ret=( $(sort <<< "${ret[*]}") ) || die
 	elif [[ -f "${entry}" || -p "${entry}" ]]; then
-		echo "${entry}"
+		ret=( "${entry}" )
 	else
 		die "\`${entry}\` does not exist"
 	fi
+
+	echo "${ret[@]}"
 }
 
 ###########
