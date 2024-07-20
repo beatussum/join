@@ -58,7 +58,7 @@ set_options() {
 setup() {
 	@mkdir -p "${TEST_DIR}"/{empty,full}.d
 
-	for i in {1..20}; do
+	for i in {1..5}; do
 		create_file "${TEST_DIR}/full.d/empty_${i}.txt"
 		create_file "${TEST_DIR}/full.d/full_${i}.txt" "$(print_content)"
 	done

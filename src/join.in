@@ -89,7 +89,10 @@ list() {
 
 	if [[ -d "${entry}" ]]; then
 		ret=( $(find "${entry}" -maxdepth 1 -mindepth 1 -type f) ) || die
-		ret=( $(sort <<< "${ret[*]}") ) || die
+
+		OLDIFS="${IFS}"
+		IFS=$'\n' ret=( $(sort <<< "${ret[*]}") ) || die
+		IFS="${OLDIFS}"
 	elif [[ -f "${entry}" || -p "${entry}" ]]; then
 		ret=( "${entry}" )
 	else

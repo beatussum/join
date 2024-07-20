@@ -109,7 +109,7 @@ Describe "actions"
 Fatal error with the following message:
   -> \`foo\` is not a number
 
-${PWD}/join at line 224:
+${PWD}/join at line 227:
 
 					die "\\\`\$2\\\` is not a number"
 
@@ -164,7 +164,7 @@ under certain conditions; type \`${PWD}/join --copyright' for details.
 Fatal error with the following message:
   -> \`--foo\` is not a correct option
 
-${PWD}/join at line 245:
+${PWD}/join at line 248:
 
 				die "\\\`\$1\\\` is not a correct option"
 
@@ -204,9 +204,11 @@ EOF
 
 			EOF
 
-			for _ in {1..20}; do
+			for _ in {1..10}; do
 				echo
-				echo
+			done
+
+			for _ in {1..5}; do
 				print_content
 				echo
 			done

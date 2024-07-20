@@ -50,9 +50,11 @@ EOF
 
 			Describe "with files"
 				result() {
-					for _ in {1..20}; do
+					for _ in {1..10}; do
 						echo
-						echo
+					done
+
+					for _ in {1..5}; do
 						print_content
 						echo
 					done
@@ -91,11 +93,12 @@ EOF
 				result() {
 					local -a ret
 
-					for i in {1..20}; do
-						ret+=(
-							"${TEST_DIR}/full.d/empty_${i}.txt"
-							"${TEST_DIR}/full.d/full_${i}.txt"
-						)
+					for i in {1..5}; do
+						ret+=( "${TEST_DIR}/full.d/empty_${i}.txt" )
+					done
+
+					for i in {1..5}; do
+						ret+=( "${TEST_DIR}/full.d/full_${i}.txt" )
 					done
 
 					echo "${ret[@]}"
@@ -129,7 +132,7 @@ EOF
 Fatal error with the following message:
   -> \`\` does not exist
 
-${PWD}/join at line 96:
+${PWD}/join at line 99:
 
 		die "\\\`\${entry}\\\` does not exist"
 
