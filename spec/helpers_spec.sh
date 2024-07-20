@@ -23,6 +23,54 @@ Describe "helpers"
 	BeforeAll set_options
 
 	Describe '`accumulate()`'
+		Describe "with a directory"
+			Describe "without file"
+				result() {
+					@cat << EOF
+
+===============================================================================
+Fatal error with the following message:
+  -> (none)
+
+${PWD}/join at line 75:
+
+	[[ -n "\${ret}" ]] || die
+
+===============================================================================
+
+EOF
+				}
+
+				It
+					When run accumulate "${TEST_DIR}/empty.d"
+					The error should eq "$(result)"
+					The status should be failure
+				End
+			End
+
+			Describe "with files"
+				result() {
+					for _ in {1..20}; do
+						echo
+						echo
+						print_content
+						echo
+					done
+				}
+
+				It
+					When call accumulate "${TEST_DIR}/full.d"
+					The output should eq "$(result)"
+					The status should be success
+				End
+			End
+		End
+
+		It "with a file"
+			When call accumulate "${TEST_DIR}/full.d/full_1.txt"
+			The output should eq "$(print_content)"
+			The status should be success
+		End
 	End
 
 	It '`get_content_of()`'
