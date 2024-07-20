@@ -16,9 +16,44 @@
 # this program. If not, see <https://www.gnu.org/licenses/>.
 
 
-declare -A OPTIONS=(
+readonly JOIN_SOURCE="${BASH_SOURCE[0]}"
+readonly JOIN_VERSION=@VERSION@
+
+declare -A JOIN_OPTIONS=(
 	[lines]=17
 )
+
+########
+# CORE #
+########
+
+die() {
+	local msg="$*"
+
+	[[ -z "${msg}" ]] && msg="(none)"
+
+	cat >&2 <<- EOF
+
+	===============================================================================
+	Fatal error with the following message:
+	  -> ${msg}
+
+	${JOIN_SOURCE} at line ${BASH_LINENO[0]}:
+
+	$(gawk "NR == ${BASH_LINENO[0]} { print }" "${JOIN_SOURCE}")
+
+	===============================================================================
+
+	EOF
+
+	exit 1
+}
+
+is_number() {
+	local n="$1"
+
+	[[ "${n}" =~ ^[-+]?[0-9]+$ ]]
+}
 
 ###########
 # HELPERS #
@@ -44,7 +79,7 @@ accumulate() {
 get_content_of() {
 	local file="$1"
 
-	tail +${OPTIONS[lines]} < "${file}"
+	tail +${JOIN_OPTIONS[lines]} < "${file}"
 }
 
 list() {
@@ -57,38 +92,6 @@ list() {
 	else
 		die "\`${entry}\` does not exist"
 	fi
-}
-
-########
-# CORE #
-########
-
-die() {
-	local msg="$*"
-
-	[[ -z "${msg}" ]] && msg="(none)"
-
-	cat >&2 <<- EOF
-
-	===============================================================================
-	Fatal error with the following message:
-	  -> ${msg}
-
-	${BASH_SOURCE[0]} at line ${BASH_LINENO[0]}:
-
-	$(gawk "NR == ${BASH_LINENO[0]} { print }" "${BASH_SOURCE[0]}")
-
-	===============================================================================
-
-	EOF
-
-	exit 1
-}
-
-is_number() {
-	local n="$1"
-
-	[[ "${n}" =~ ^[-+]?[0-9]+$ ]]
 }
 
 ###########
@@ -153,17 +156,17 @@ join() (
 
 usage() {
 	cat <<- EOF
-	Usage: ${BASH_SOURCE[0]} [options...] [--] [patterns...] [--] [inputs...]
+	Usage: ${JOIN_SOURCE} [options...] [--] [patterns...] [--] [inputs...]
 
 	Options:
 	  -c,--copyright    Print copyright information.
 	  -h,--help         Print this message.
 	  -l,--lines NUM    Set the number of lines to be deleted at the beginning of each entry.
 
-	${BASH_SOURCE[0]} Copyright (C) 2024 Mattéo Rossillol‑‑Laruelle <beatussum@protonmail.com>
-	This program comes with ABSOLUTELY NO WARRANTY; for details type \`${BASH_SOURCE[0]} --copyright'.
+	${JOIN_SOURCE} Copyright (C) 2024 Mattéo Rossillol‑‑Laruelle <beatussum@protonmail.com>
+	This program comes with ABSOLUTELY NO WARRANTY; for details type \`${JOIN_SOURCE} --copyright'.
 	This is free software, and you are welcome to redistribute it
-	under certain conditions; type \`${BASH_SOURCE[0]} --copyright' for details.
+	under certain conditions; type \`${JOIN_SOURCE} --copyright' for details.
 	EOF
 }
 
@@ -180,20 +183,20 @@ main() {
 
 				;;
 
+			-h|--help)
+				usage
+				exit
+
+				;;
+
 			-l|--lines)
 				if is_number "$2"; then
-					OPTIONS[lines]=$2
+					JOIN_OPTIONS[lines]=$2
 				else
 					die "\`$2\` is not a number"
 				fi
 
 				shift
-
-				;;
-
-			-h|--help)
-				usage
-				exit
 
 				;;
 
