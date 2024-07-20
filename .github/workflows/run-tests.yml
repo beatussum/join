@@ -16,13 +16,16 @@ jobs:
     steps:
       - name: Install the dependencies of shellspec
         run: sudo apt-get install -qy kcov
-      
+
       - name: Download shellspec
         run: wget -O - https://github.com/shellspec/shellspec/archive/refs/tags/0.28.1.tar.gz | tar -xz
 
       - name: Install shellspec
         working-directory: shellspec-0.28.1
         run: sudo make install
+
+      - name: Install other dependencies
+        run: sudo apt-get install -qy gawk
 
       - name: Checkout
         uses: actions/checkout@v4.1.7
