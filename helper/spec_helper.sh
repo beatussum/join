@@ -52,7 +52,7 @@ create_file() {
 # hooks #
 
 set_options() {
-	JOIN_OPTIONS[lines]=5
+	JOIN_OPTIONS[lines]=0
 }
 
 setup() {

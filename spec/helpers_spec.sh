@@ -25,25 +25,10 @@ Describe "helpers"
 	Describe '`accumulate()`'
 	End
 
-	Describe '`get_content_of()`'
-		result() {
-			%text
-			#|Maecenas molestie urna in dui ultricies laoreet.
-			#|Duis luctus erat vel tortor vehicula rhoncus.
-			#|Curabitur id tincidunt arcu, et malesuada ante.
-			#|Ut ac accumsan erat.
-			#|Nam eu risus placerat ante suscipit volutpat et sed orci.
-			#|Nunc eget varius lectus.
-			#|In ullamcorper aliquet ex, at vestibulum lectus mollis in.
-			#|Duis pulvinar viverra sem, et ultrices eros placerat vitae.
-			#|Proin neque sapien, placerat ut sem vitae, iaculis luctus sem.
-		}
-
-		It
-			When call get_content_of "${TEST_DIR}/full.d/full_1.txt"
-			The output should eq "$(result)"
-			The status should be success
-		End
+	It '`get_content_of()`'
+		When call get_content_of "${TEST_DIR}/full.d/full_1.txt"
+		The output should eq "$(print_content)"
+		The status should be success
 	End
 
 	Describe '`list()`'
