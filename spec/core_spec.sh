@@ -20,7 +20,7 @@ Describe "core"
 	Describe '`die()`'
 		Describe "wihtout message"
 			result() {
-				cat << EOF
+				@cat << EOF
 
 ===============================================================================
 Fatal error with the following message:
@@ -44,7 +44,7 @@ EOF
 
 		Describe "with message"
 			result() {
-				cat << EOF
+				@cat << EOF
 
 ===============================================================================
 Fatal error with the following message:

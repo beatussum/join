@@ -84,7 +84,7 @@ Describe "helpers"
 
 		Describe "with bad entry"
 			result() {
-				cat << EOF
+				@cat << EOF
 
 ===============================================================================
 Fatal error with the following message:
