@@ -163,6 +163,7 @@ usage() {
 	  -h,--help         Print this message.
 	  -l,--lines NUM    Set the number of lines to be deleted at the beginning of
 	                    each entry to NUM.
+	  -v,--version      Print version information.
 
 	Patterns are defined with the following syntax:
 	  1. @<PATTERN>@=<file>
@@ -186,6 +187,10 @@ usage() {
 	This is free software, and you are welcome to redistribute it
 	under certain conditions; type \`${JOIN_SOURCE} --copyright' for details.
 	EOF
+}
+
+version() {
+	echo "${JOIN_SOURCE} version ${JOIN_VERSION}"
 }
 
 #################
@@ -215,6 +220,12 @@ main() {
 				fi
 
 				shift
+
+				;;
+
+			-v|--version)
+				version
+				exit
 
 				;;
 
