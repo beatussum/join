@@ -62,6 +62,18 @@ setup() {
 		create_file "${TEST_DIR}/full.d/empty_${i}.txt"
 		create_file "${TEST_DIR}/full.d/full_${i}.txt" "$(print_content)"
 	done
+
+	cat <<- "EOF" > "${TEST_DIR}/template"
+	This file is a test template.
+
+	foo@bar.com
+
+	@HW@
+
+	@FULLD@
+
+	The string `@FULL@` is a lorem ipsum.
+	EOF
 }
 
 cleanup() {
