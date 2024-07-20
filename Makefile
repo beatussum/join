@@ -14,7 +14,7 @@
 # this program. If not, see <https://www.gnu.org/licenses/>.
 
 
-VERSION	:::= $(shell date "+%Y%m%d")
+VERSION	= $(shell date "+%Y%m%d")
 
 DESTDIR	?=
 PREFIX	?= /usr/local
