@@ -1,7 +1,7 @@
 --execdir @project/build
 --covdir build/coverage
 --helperdir helper
---kcov-options "--include-path=src"
+--kcov-options "--include-pattern=build/join"
 --output j
 --reportdir build/report
 --require spec_helper

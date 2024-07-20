@@ -40,7 +40,7 @@ Describe "actions"
 		}
 
 		It "with $1"
-			When call ./join $2
+			When call @join $2
 			The output should eq "$(result)"
 			The status should be success
 		End
@@ -53,41 +53,42 @@ Describe "actions"
 		End
 
 		result() {
-			%text
-			#|Usage: ./join [options...] [--] [patterns...] [--] [inputs...]
-			#|
-			#|Options:
-			#|  -c,--copyright    Print copyright information.
-			#|  -h,--help         Print this message.
-			#|  -l,--lines NUM    Set the number of lines to be deleted at the beginning of
-			#|                    each entry to NUM.
-			#|  -v,--version      Print version information.
-			#|
-			#|Patterns are defined with the following syntax:
-			#|  1. @<PATTERN>@=<file>
-			#|  2. @<PATTERN>@=<directory>
-			#|  3. @<PATTERN>@="<string>"
-			#|
-			#|PATTERN must be uppercase.
-			#|
-			#|With the syntax (1), all the entries @PATTERN@ in inputs will be replaced by the
-			#|content of file.
-			#|
-			#|With the syntax (2), all the entries @PATTERN@ in inputs will be replaced by the
-			#|content of all the files in directory.
-			#|
-			#|With the syntax (3), all the entries @PATTERN@ in inputs will be replaced by
-			#|string. As the shell will probably interpreted double quotes, the latter should
-			#|be escaped, e.g. @FOO@='"bar"'.
-			#|
-			#|./join Copyright (C) 2024 Mattéo Rossillol‑‑Laruelle <beatussum@protonmail.com>
-			#|This program comes with ABSOLUTELY NO WARRANTY; for details type `./join --copyright'.
-			#|This is free software, and you are welcome to redistribute it
-			#|under certain conditions; type `./join --copyright' for details.
+			@cat <<- EOF
+			Usage: ${PWD}/join [options...] [--] [patterns...] [--] [inputs...]
+
+			Options:
+			  -c,--copyright    Print copyright information.
+			  -h,--help         Print this message.
+			  -l,--lines NUM    Set the number of lines to be deleted at the beginning of
+			                    each entry to NUM.
+			  -v,--version      Print version information.
+
+			Patterns are defined with the following syntax:
+			  1. @<PATTERN>@=<file>
+			  2. @<PATTERN>@=<directory>
+			  3. @<PATTERN>@="<string>"
+
+			PATTERN must be uppercase.
+
+			With the syntax (1), all the entries @PATTERN@ in inputs will be replaced by the
+			content of file.
+
+			With the syntax (2), all the entries @PATTERN@ in inputs will be replaced by the
+			content of all the files in directory.
+
+			With the syntax (3), all the entries @PATTERN@ in inputs will be replaced by
+			string. As the shell will probably interpreted double quotes, the latter should
+			be escaped, e.g. @FOO@='"bar"'.
+
+			${PWD}/join Copyright (C) 2024 Mattéo Rossillol‑‑Laruelle <beatussum@protonmail.com>
+			This program comes with ABSOLUTELY NO WARRANTY; for details type \`${PWD}/join --copyright'.
+			This is free software, and you are welcome to redistribute it
+			under certain conditions; type \`${PWD}/join --copyright' for details.
+			EOF
 		}
 
 		It "with $1"
-			When call ./join $2
+			When call @join $2
 			The output should eq "$(result)"
 			The status should be success
 		End
@@ -102,21 +103,22 @@ Describe "actions"
 		Describe "with $1"
 			Describe "with not a number"
 				result() {
-					%text
-					#|
-					#|===============================================================================
-					#|Fatal error with the following message:
-					#|  -> `foo` is not a number
-					#|
-					#|./join at line 224:
-					#|
-					#|					die "\`$2\` is not a number"
-					#|
-					#|===============================================================================
+					@cat << EOF
+
+===============================================================================
+Fatal error with the following message:
+  -> \`foo\` is not a number
+
+${PWD}/join at line 224:
+
+					die "\\\`\$2\\\` is not a number"
+
+===============================================================================
+EOF
 				}
 
 				It
-					When call ./join $2 foo
+					When call @join $2 foo
 					The error should eq "$(result)"
 					The status should be failure
 				End
@@ -126,51 +128,52 @@ Describe "actions"
 
 	Describe "with not a correct option"
 		result() {
-			%text
-			#|Usage: ./join [options...] [--] [patterns...] [--] [inputs...]
-			#|
-			#|Options:
-			#|  -c,--copyright    Print copyright information.
-			#|  -h,--help         Print this message.
-			#|  -l,--lines NUM    Set the number of lines to be deleted at the beginning of
-			#|                    each entry to NUM.
-			#|  -v,--version      Print version information.
-			#|
-			#|Patterns are defined with the following syntax:
-			#|  1. @<PATTERN>@=<file>
-			#|  2. @<PATTERN>@=<directory>
-			#|  3. @<PATTERN>@="<string>"
-			#|
-			#|PATTERN must be uppercase.
-			#|
-			#|With the syntax (1), all the entries @PATTERN@ in inputs will be replaced by the
-			#|content of file.
-			#|
-			#|With the syntax (2), all the entries @PATTERN@ in inputs will be replaced by the
-			#|content of all the files in directory.
-			#|
-			#|With the syntax (3), all the entries @PATTERN@ in inputs will be replaced by
-			#|string. As the shell will probably interpreted double quotes, the latter should
-			#|be escaped, e.g. @FOO@='"bar"'.
-			#|
-			#|./join Copyright (C) 2024 Mattéo Rossillol‑‑Laruelle <beatussum@protonmail.com>
-			#|This program comes with ABSOLUTELY NO WARRANTY; for details type `./join --copyright'.
-			#|This is free software, and you are welcome to redistribute it
-			#|under certain conditions; type `./join --copyright' for details.
-			#|
-			#|===============================================================================
-            #|Fatal error with the following message:
-            #|  -> `--foo` is not a correct option
-            #|
-            #|./join at line 245:
-            #|
-            #|				die "\`$1\` is not a correct option"
-            #|
-            #|===============================================================================
+			@cat << EOF
+Usage: ${PWD}/join [options...] [--] [patterns...] [--] [inputs...]
+
+Options:
+  -c,--copyright    Print copyright information.
+  -h,--help         Print this message.
+  -l,--lines NUM    Set the number of lines to be deleted at the beginning of
+                    each entry to NUM.
+  -v,--version      Print version information.
+
+Patterns are defined with the following syntax:
+  1. @<PATTERN>@=<file>
+  2. @<PATTERN>@=<directory>
+  3. @<PATTERN>@="<string>"
+
+PATTERN must be uppercase.
+
+With the syntax (1), all the entries @PATTERN@ in inputs will be replaced by the
+content of file.
+
+With the syntax (2), all the entries @PATTERN@ in inputs will be replaced by the
+content of all the files in directory.
+
+With the syntax (3), all the entries @PATTERN@ in inputs will be replaced by
+string. As the shell will probably interpreted double quotes, the latter should
+be escaped, e.g. @FOO@='"bar"'.
+
+${PWD}/join Copyright (C) 2024 Mattéo Rossillol‑‑Laruelle <beatussum@protonmail.com>
+This program comes with ABSOLUTELY NO WARRANTY; for details type \`${PWD}/join --copyright'.
+This is free software, and you are welcome to redistribute it
+under certain conditions; type \`${PWD}/join --copyright' for details.
+
+===============================================================================
+Fatal error with the following message:
+  -> \`--foo\` is not a correct option
+
+${PWD}/join at line 245:
+
+				die "\\\`\$1\\\` is not a correct option"
+
+===============================================================================
+EOF
 		}
 
 		It
-			When call ./join --foo
+			When call @join --foo
 			The error should eq "$(result)"
 			The status should be failure
 		End
@@ -179,6 +182,17 @@ Describe "actions"
 	It "normal usage"
 		BeforeCall setup
 		AfterCall cleanup
+
+		join() {
+			@join \
+				--lines 0 \
+				-- \
+				HW='"Hello world!"' \
+				FULLD="${TEST_DIR}/full.d" \
+				FULL="${TEST_DIR}/full.d/full_1.txt" \
+				-- \
+				"${TEST_DIR}/template"
+		}
 
 		result() {
 			@cat <<- EOF
@@ -213,7 +227,7 @@ Describe "actions"
             #|Proin neque sapien, placerat ut sem vitae, iaculis luctus sem.` is a lorem ipsum.
 		}
 
-		When call ./join --lines 0 HW='"Hello world!"' FULLD="${TEST_DIR}/full.d" FULL="${TEST_DIR}/full.d/full_1.txt" "${TEST_DIR}/template"
+		When call join
 		The output should eq "$(result)"
 		The status should be success
 	End
