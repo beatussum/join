@@ -19,49 +19,33 @@ Describe "core"
 
 	Describe '`die()`'
 		Describe "wihtout message"
-			result() {
-				@cat <<EOF
-
-===============================================================================
-Fatal error with the following message:
-  -> (none)
-
-${PWD}/join at line 158:
-
-		print
-
-===============================================================================
-
-EOF
-			}
-
 			It
 				When run die
-				The error should eq "$(result)"
+				The line 1 of error should be blank
+				The line 2 of error should eq "==============================================================================="
+				The line 3 of error should eq "Fatal error with the following message:"
+				The line 4 of error should eq "  -> (none)"
+				The line 5 of error should be blank
+				The line 7 of error should be blank
+				The line 9 of error should be blank
+				The line 10 of error should eq "==============================================================================="
+				The line 11 of error should be blank
 				The status should be failure
 			End
 		End
 
 		Describe "with message"
-			result() {
-				@cat <<EOF
-
-===============================================================================
-Fatal error with the following message:
-  -> Lorem ipsum
-
-${PWD}/join at line 158:
-
-		print
-
-===============================================================================
-
-EOF
-			}
-
 			It
 				When run die "Lorem ipsum"
-				The error should eq "$(result)"
+				The line 1 of error should be blank
+				The line 2 of error should eq "==============================================================================="
+				The line 3 of error should eq "Fatal error with the following message:"
+				The line 4 of error should eq "  -> Lorem ipsum"
+				The line 5 of error should be blank
+				The line 7 of error should be blank
+				The line 9 of error should be blank
+				The line 10 of error should eq "==============================================================================="
+				The line 11 of error should be blank
 				The status should be failure
 			End
 		End
