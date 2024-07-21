@@ -101,7 +101,7 @@ Describe "actions"
 		End
 
 		Describe "with $1"
-			Describe "with not a number"
+			It "with not a number"
 				result() {
 					@cat <<EOF
 
@@ -117,16 +117,14 @@ ${PWD}/join at line 225:
 EOF
 				}
 
-				It
-					When run source "${PWD}/join" $2 foo
-					The error should eq "$(result)"
-					The status should be failure
-				End
+				When run source "${PWD}/join" $2 foo
+				The error should eq "$(result)"
+				The status should be failure
 			End
 		End
 	End
 
-	Describe "with not a correct option"
+	It "with not a correct option"
 		result() {
 			@cat <<EOF
 Usage: ${PWD}/join [options...] [--] [patterns...] [--] [inputs...]
@@ -172,11 +170,9 @@ ${PWD}/join at line 246:
 EOF
 		}
 
-		It
-			When run source "${PWD}/join" --foo
-			The error should eq "$(result)"
-			The status should be failure
-		End
+		When run source "${PWD}/join" --foo
+		The error should eq "$(result)"
+		The status should be failure
 	End
 
 	It "normal usage"

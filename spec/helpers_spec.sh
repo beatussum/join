@@ -24,7 +24,7 @@ Describe "helpers"
 
 	Describe '`accumulate()`'
 		Describe "with a directory"
-			Describe "without file"
+			It "without file"
 				result() {
 					@cat <<EOF
 
@@ -41,14 +41,12 @@ ${PWD}/join at line 73:
 EOF
 				}
 
-				It
-					When run accumulate "${TEST_DIR}/empty.d"
-					The error should eq "$(result)"
-					The status should be failure
-				End
+				When run accumulate "${TEST_DIR}/empty.d"
+				The error should eq "$(result)"
+				The status should be failure
 			End
 
-			Describe "with files"
+			It "with files"
 				result() {
 					for _ in {1..10}; do
 						echo
@@ -60,11 +58,9 @@ EOF
 					done
 				}
 
-				It
-					When call accumulate "${TEST_DIR}/full.d"
-					The output should eq "$(result)"
-					The status should be success
-				End
+				When call accumulate "${TEST_DIR}/full.d"
+				The output should eq "$(result)"
+				The status should be success
 			End
 		End
 
@@ -89,7 +85,7 @@ EOF
 				The status should be success
 			End
 
-			Describe "with files"
+			It "with files"
 				result() {
 					local -a ret
 
@@ -104,11 +100,9 @@ EOF
 					echo "${ret[@]}"
 				}
 
-				It
-					When call list "${TEST_DIR}/full.d"
-					The output should eq "$(result)"
-					The status should be success
-				End
+				When call list "${TEST_DIR}/full.d"
+				The output should eq "$(result)"
+				The status should be success
 			End
 		End
 
@@ -124,7 +118,7 @@ EOF
 			The status should be success
 		End
 
-		Describe "with bad entry"
+		It "with bad entry"
 			result() {
 				@cat <<EOF
 
@@ -141,11 +135,9 @@ ${PWD}/join at line 97:
 EOF
 			}
 
-			It
-				When run list
-				The error should eq "$(result)"
-				The status should be failure
-			End
+			When run list
+			The error should eq "$(result)"
+			The status should be failure
 		End
 	End
 End

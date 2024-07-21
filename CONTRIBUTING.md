@@ -96,6 +96,3 @@ Describe "Test helper function"
     End
 End
 ```
-
-The concatenation of a group hiearchy should form sentence.
-In the above example, one get _Test helper function for target management `get_current_target()` with set configuration_.
