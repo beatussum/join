@@ -26,6 +26,7 @@ INSTALLEXECCMD	?= install -D -m0755
 INSTALLMKDIRCMD	?= install -d
 RMDIRCMD		?= rm -fr
 SEDCMD			?= sed
+SHELLCHECKCMD	?= shellcheck
 SHELLSPECCMD	?= shellspec
 
 .PHONY: all
@@ -37,6 +38,10 @@ $(BUILDDIR):
 $(BUILDDIR)/join: src/join.in $(BUILDDIR)
 	$(SEDCMD) "s/@VERSION@/$(VERSION)/g" $< > $@
 	$(CHMOD) $@
+
+.PHONY: check
+check: $(BUILDDIR)/join
+	$(SHELLCHECKCMD) $(BUILDDIR)/join
 
 .PHONY: clean
 clean:
