@@ -3,6 +3,7 @@
 [![License](https://img.shields.io/github/license/beatussum/join)](LICENSE)
 [![Release](https://img.shields.io/github/v/release/beatussum/join)](https://github.com/beatussum/join/releases/)
 
+[![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/beatussum/join/run-check.yml)](https://github.com/beatussum/join/actions/workflows/run-check.yml/)
 [![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/beatussum/join/run-tests.yml)](https://github.com/beatussum/join/actions/workflows/run-tests.yml/)
 [![codecov](https://codecov.io/gh/beatussum/join/graph/badge.svg)](https://codecov.io/gh/beatussum/join/)
 
