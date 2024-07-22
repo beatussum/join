@@ -66,7 +66,7 @@ setup() {
 	cat <<- "EOF" > "${TEST_DIR}/template"
 	This file is a test template.
 
-	foo@bar.com
+	foo@bar.com && bar@foo.org
 
 	@HW@
 

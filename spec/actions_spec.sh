@@ -183,7 +183,7 @@ EOF
 			@cat <<-EOF
 			This file is a test template.
 
-			foo@bar.com
+			foo@bar.com && bar@foo.org
 
 			Hello world!
 
