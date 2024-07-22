@@ -3,9 +3,10 @@
 [![License](https://img.shields.io/github/license/beatussum/join)](LICENSE)
 [![Release](https://img.shields.io/github/v/release/beatussum/join)](https://github.com/beatussum/join/releases/)
 
-[![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/beatussum/join/run-check.yml)](https://github.com/beatussum/join/actions/workflows/run-check.yml/)
-[![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/beatussum/join/run-tests.yml)](https://github.com/beatussum/join/actions/workflows/run-tests.yml/)
-[![codecov](https://codecov.io/gh/beatussum/join/graph/badge.svg)](https://codecov.io/gh/beatussum/join/)
+[![GitHub Actions Workflow Status (run check)](https://img.shields.io/github/actions/workflow/status/beatussum/join/run-check.yml?label=run%20check)](https://github.com/beatussum/join/actions/workflows/run-check.yml/)
+[![GitHub Actions Workflow Status (run tests)](https://img.shields.io/github/actions/workflow/status/beatussum/join/run-tests.yml?label=run%20tests)](https://github.com/beatussum/join/actions/workflows/run-tests.yml/)
+[![Codecov](https://codecov.io/gh/beatussum/join/graph/badge.svg)](https://codecov.io/gh/beatussum/join/)
+[![CodeFactor](https://www.codefactor.io/repository/github/beatussum/join/badge)](https://www.codefactor.io/repository/github/beatussum/join/)
 
 ## Table of contents
 
