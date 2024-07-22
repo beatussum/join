@@ -25,25 +25,9 @@ Describe "helpers"
 	Describe '`accumulate()`'
 		Describe "with a directory"
 			It "without file"
-				result() {
-					@cat <<EOF
-
-===============================================================================
-Fatal error with the following message:
-  -> (none)
-
-${PWD}/join at line 73:
-
-	[[ -n "\${ret}" ]] || die
-
-===============================================================================
-
-EOF
-				}
-
-				When run accumulate "${TEST_DIR}/empty.d"
-				The error should eq "$(result)"
-				The status should be failure
+				When call accumulate "${TEST_DIR}/empty.d"
+				The output should be blank
+				The status should be success
 			End
 
 			It "with files"
@@ -122,7 +106,7 @@ EOF
 Fatal error with the following message:
   -> \`\` does not exist
 
-${PWD}/join at line 97:
+${PWD}/join at line 98:
 
 		die "\\\`\${entry}\\\` does not exist"
 

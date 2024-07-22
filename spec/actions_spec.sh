@@ -109,7 +109,7 @@ Describe "actions"
 Fatal error with the following message:
   -> \`foo\` is not a number
 
-${PWD}/join at line 229:
+${PWD}/join at line 230:
 
 					die "\\\`\$2\\\` is not a number"
 
@@ -162,7 +162,7 @@ under certain conditions; type \`${PWD}/join --copyright' for details.
 Fatal error with the following message:
   -> \`--foo\` is not a correct option
 
-${PWD}/join at line 250:
+${PWD}/join at line 251:
 
 				die "\\\`\$1\\\` is not a correct option"
 

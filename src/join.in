@@ -16,6 +16,8 @@
 # this program. If not, see <https://www.gnu.org/licenses/>.
 
 
+set -o pipefail
+
 readonly JOIN_SOURCE="${BASH_SOURCE[0]}"
 readonly JOIN_VERSION=@VERSION@
 
@@ -61,16 +63,16 @@ accumulate() {
 	local entry="$1"
 
 	local ret
-	local -a files
+	local files
 
-	mapfile -t files < <(list "${entry}")
+	files="$(list "${entry}")" || die
+	mapfile -t files < <(echo -n "${files}")
 
 	for file in "${files[@]}"; do
 		ret+="$(get_content_of "${file}")" || die
 		ret+=$'\n\n'
 	done
 
-	[[ -n "${ret}" ]] || die
 	echo "${ret}"
 }
 
@@ -79,18 +81,17 @@ get_content_of() {
 
 	# shellcheck disable=SC2086
 	# `JOIN_OPTIONS[lines]` is a number.
-	tail +${JOIN_OPTIONS[lines]} < "${file}"
+	tail +${JOIN_OPTIONS[lines]} < "${file}" || die
 }
 
 list() {
 	local entry="$1"
 
-	local -a ret
+	local ret
 
 	if [[ -d "${entry}" ]]; then
-		mapfile \
-			-t ret \
-			< <(find "${entry}" -maxdepth 1 -mindepth 1 -type f | sort)
+		ret="$(find "${entry}" -maxdepth 1 -mindepth 1 -type f | sort)" || die
+		mapfile -t ret < <(echo -n "${ret}")
 	elif [[ -f "${entry}" || -p "${entry}" ]]; then
 		ret=( "${entry}" )
 	else
