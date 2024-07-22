@@ -87,17 +87,13 @@ EOF
 
 			It "with files"
 				result() {
-					local -a ret
-
 					for i in {1..5}; do
-						ret+=( "${TEST_DIR}/full.d/empty_${i}.txt" )
+						echo "${TEST_DIR}/full.d/empty_${i}.txt"
 					done
 
 					for i in {1..5}; do
-						ret+=( "${TEST_DIR}/full.d/full_${i}.txt" )
+						echo "${TEST_DIR}/full.d/full_${i}.txt"
 					done
-
-					echo "${ret[@]}"
 				}
 
 				When call list "${TEST_DIR}/full.d"

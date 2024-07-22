@@ -63,7 +63,7 @@ accumulate() {
 	local ret
 	local -a files
 
-	files=( $(list "${entry}") ) || die
+	mapfile -t files < <(list "${entry}")
 
 	for file in "${files[@]}"; do
 		ret+="$(get_content_of "${file}")" || die
@@ -77,6 +77,8 @@ accumulate() {
 get_content_of() {
 	local file="$1"
 
+	# shellcheck disable=SC2086
+	# `JOIN_OPTIONS[lines]` is a number.
 	tail +${JOIN_OPTIONS[lines]} < "${file}"
 }
 
@@ -86,18 +88,20 @@ list() {
 	local -a ret
 
 	if [[ -d "${entry}" ]]; then
-		ret=( $(find "${entry}" -maxdepth 1 -mindepth 1 -type f) ) || die
-
-		OLDIFS="${IFS}"
-		IFS=$'\n' ret=( $(sort <<< "${ret[*]}") ) || die
-		IFS="${OLDIFS}"
+		mapfile \
+			-t ret \
+			< <(find "${entry}" -maxdepth 1 -mindepth 1 -type f | sort)
 	elif [[ -f "${entry}" || -p "${entry}" ]]; then
 		ret=( "${entry}" )
 	else
 		die "\`${entry}\` does not exist"
 	fi
 
-	echo "${ret[@]}"
+	if [[ ${#ret} -ne 0 ]]; then
+		IFS=$'\n'
+		echo "${ret[*]}"
+		unset IFS
+	fi
 }
 
 ###########
@@ -138,7 +142,7 @@ join() (
 			[[ "${content}" = - ]] && content=/dev/stdin
 
 			content="$(accumulate "${entry}")" || die
-			content="$(sed 's/&/\\&/g' <<< "${content}")" || die
+			content="${content//&/\\&}"
 		fi
 
 		export "${pattern}"="${content}"
@@ -260,6 +264,8 @@ main() {
 			local pattern="${BASH_REMATCH[1]}"
 			local entry="${BASH_REMATCH[2]}"
 
+			# shellcheck disable=SC2034
+			# `patterns` is used by reference.
 			patterns["${pattern}"]="${entry}"
 		elif [[ "$1" = -- ]]; then
 			shift
@@ -271,6 +277,8 @@ main() {
 		shift
 	done
 
+	# shellcheck disable=SC2034
+	# `inputs` is used by reference.
 	local inputs=( "$@" )
 
 	join patterns inputs || die
