@@ -24,7 +24,8 @@ METAINFODIR	?= $(DESTDIR)/$(PREFIX)/share/metainfo
 
 BUILDDIR	?= build
 
-CHMOD			?= chmod +x
+APPSTREAMCLICMD	?= appstreamcli
+CHMODCMD		?= chmod +x
 INSTALLEXECCMD	?= install -D -m0755
 INSTALLFILECMD	?= install -D -m0644
 INSTALLMKDIRCMD	?= install -d
@@ -41,11 +42,16 @@ $(BUILDDIR):
 
 $(BUILDDIR)/join: src/join.in $(BUILDDIR)
 	$(SEDCMD) "s/@VERSION@/$(VERSION)/g" $< > $@
-	$(CHMOD) $@
+	$(CHMODCMD) $@
 
 .PHONY: check
 check: $(BUILDDIR)/join
+	$(APPSTREAMCLICMD) \
+		validate \
+		share/metainfo/io.github.beatussum.join.metainfo.xml
+
 	$(SHELLCHECKCMD) $(BUILDDIR)/join
+	$(SHELLSPECCMD) --syntax-check
 
 .PHONY: clean
 clean:
