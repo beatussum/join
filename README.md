@@ -11,6 +11,7 @@
 ## Table of contents
 
 - [What is join?](#what-is-join)
+- [Usage](#usage)
 
 - [Building](#building)
     - [Dependencies](#dependencies)
