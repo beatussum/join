@@ -19,10 +19,14 @@ VERSION	= $(shell date "+%Y%m%d")
 DESTDIR	?=
 PREFIX	?= /usr/local
 
+BINDIR		?= $(DESTDIR)/$(PREFIX)/bin
+METAINFODIR	?= $(DESTDIR)/$(PREFIX)/share/metainfo
+
 BUILDDIR	?= build
 
 CHMOD			?= chmod +x
 INSTALLEXECCMD	?= install -D -m0755
+INSTALLFILECMD	?= install -D -m0644
 INSTALLMKDIRCMD	?= install -d
 RMDIRCMD		?= rm -fr
 SEDCMD			?= sed
@@ -57,4 +61,8 @@ test: $(BUILDDIR)/join
 
 .PHONY: install
 install: $(BUILDDIR)/join
-	$(INSTALLEXECCMD) $(BUILDDIR)/join $(DESTDIR)/$(PREFIX)/bin/join
+	$(INSTALLEXECCMD) $(BUILDDIR)/join $(BINDIR)/join
+
+	$(INSTALLFILECMD) \
+		share/metainfo/io.github.beatussum.join.metainfo.xml \
+		$(METAINFODIR)/io.github.beatussum.join.metainfo.xml

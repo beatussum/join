@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="console-application">
+	<id>io.github.beatussum.join</id>
+
+	<metadata_license>CC-BY-SA-4.0</metadata_license>
+	<name>join</name>
+	<summary>A small script allowing to replace patterns in files by the content of other files</summary>
+
+	<description>
+		<p>
+			<em>join</em> is a small script allowing to replace patterns in files by the content of other files.
+		</p>
+
+		<p xml:lang="fr_FR">
+			<em>join</em> est un petit script permettant de remplacer des motifs se trouvant dans des fichiers par le contenu d'autres fichiers.
+		</p>
+	</description>
+
+	<categories>
+		<category>Building</category>
+		<category>Development</category>
+	</categories>
+
+	<keywords>
+		<keyword translate="no">Bash</keyword>
+		<keyword>script</keyword>
+		<keyword xml:lang="fr_FR">script</keyword>
+	</keywords>
+
+	<url type="homepage">https://github.com/beatussum/join/</url>
+	<url type="bugtracker">https://github.com/beatussum/join/issues/</url>
+	<url type="vcs-browser">https://github.com/beatussum/join/</url>
+	<url type="contribute">https://github.com/beatussum/join/blob/develop/CONTRIBUTING.md</url>
+
+	<releases>
+		<release version="20240720" date="2024-07-20">
+			<description>
+				<p>
+					First release.
+				</p>
+
+				<p xml:lang="fr_FR">
+					Première version.
+				</p>
+			</description>
+
+			<url>https://github.com/beatussum/join/releases/tag/20240720/</url>
+
+			<artifacts>
+				<artifact type="source">
+					<location>https://github.com/beatussum/join/archive/refs/tags/20240720.zip</location>
+
+					<checksum type="sha256">397febc8bb10aa4ad419b6e22da6fcfa16811baacc876d32963dadb12cea97b0</checksum>
+					<checksum type="blake2b">4e5551295fce12dcba78493508adc138befa2837b7937cca41d65be31cf06cb5467e2275a79a989536617eea77467e74b22ccee3f698967dee3a76700dc03f39</checksum>
+
+					<size type="download">34062</size>
+					<size type="installed">5758</size>
+				</artifact>
+
+				<artifact type="source">
+					<location>https://github.com/beatussum/join/archive/refs/tags/20240720.tar.gz</location>
+
+					<checksum type="sha256">408142475d11f5b9b44804a8cd75440282482775c4f51d37e097572cd1d5d21b</checksum>
+					<checksum type="blake2b">77b5d242b63cae31e7312fd66f9a48007f817df916760ba34cbd3efc6f9597ee86f3c059ec65d0ea4bf31f9a37c6f6e2c29b63a9d8195c387737f0e6454e617f</checksum>
+
+					<size type="download">23651</size>
+					<size type="installed">5758</size>
+				</artifact>
+			</artifacts>
+		</release>
+	</releases>
+
+	<provides>
+		<binary>join</binary>
+	</provides>
+
+	<requires>
+		<control>console</control>
+		<control>keyboard</control>
+
+		<internet>offline-only</internet>
+	</requires>
+
+	<project_license>GPL-3.0-or-later</project_license>
+
+	<developer id="io.github.beatussum">
+		<name>Mattéo Rossillol‑‑Laruelle</name>
+	</developer>
+
+	<content_rating type="oars-1.1" />
+	<update_contact>beatussum@protonmail.com</update_contact>
+</component>
