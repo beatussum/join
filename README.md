@@ -1,4 +1,4 @@
-# join
+# <img src="share/icons/hicolor/scalable/apps/io.github.beatussum.join.svg" width="64" height="64"/> join
 
 [![License](https://img.shields.io/github/license/beatussum/join)](LICENSE)
 [![Release](https://img.shields.io/github/v/release/beatussum/join)](https://github.com/beatussum/join/releases/)

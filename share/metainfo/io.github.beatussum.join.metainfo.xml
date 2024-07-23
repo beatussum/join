@@ -5,6 +5,7 @@
 	<metadata_license>CC-BY-SA-4.0</metadata_license>
 	<name>join</name>
 	<summary>A small script allowing to replace patterns in files by the content of other files</summary>
+	<icon type="stock">io.github.beatussum.join</icon>
 
 	<description>
 		<p>

@@ -20,6 +20,7 @@ DESTDIR	?=
 PREFIX	?= /usr/local
 
 BINDIR		?= $(DESTDIR)/$(PREFIX)/bin
+ICONSDIR	?= $(DESTDIR)/$(PREFIX)/share/icons/hicolor/scalable/apps
 METAINFODIR	?= $(DESTDIR)/$(PREFIX)/share/metainfo
 
 BUILDDIR	?= build
@@ -68,6 +69,10 @@ test: $(BUILDDIR)/join
 .PHONY: install
 install: $(BUILDDIR)/join
 	$(INSTALLEXECCMD) $(BUILDDIR)/join $(BINDIR)/join
+
+	$(INSTALLFILECMD) \
+		share/icons/hicolor/scalable/apps/io.github.beatussum.join.svg \
+		$(ICONSDIR)/io.github.beatussum.join.svg
 
 	$(INSTALLFILECMD) \
 		share/metainfo/io.github.beatussum.join.metainfo.xml \

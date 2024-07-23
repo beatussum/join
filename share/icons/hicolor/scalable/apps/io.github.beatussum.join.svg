@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+     width="256"
+     height="256"
+     viewBox="0 0 67.733325 67.733325"
+     version="1.1"
+     id="svg1"
+     inkscape:version="1.3.2 (091e20ef0f, 2023-11-25)"
+     sodipodi:docname="io.github.beatussum.join.svg"
+     xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+     xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+     xmlns="http://www.w3.org/2000/svg"
+     xmlns:svg="http://www.w3.org/2000/svg"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:cc="http://creativecommons.org/ns#"
+     xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <title
+         id="title1">join icon</title>
+    <sodipodi:namedview
+         id="namedview1"
+         pagecolor="#ffffff"
+         bordercolor="#000000"
+         borderopacity="0.25"
+         inkscape:showpageshadow="true"
+         inkscape:pageopacity="0.0"
+         inkscape:pagecheckerboard="true"
+         inkscape:deskcolor="#d1d1d1"
+         inkscape:document-units="mm"
+         borderlayer="true"
+         labelstyle="default"
+         inkscape:zoom="2.68912"
+         inkscape:cx="141.68204"
+         inkscape:cy="132.57125"
+         inkscape:window-width="1876"
+         inkscape:window-height="1036"
+         inkscape:window-x="0"
+         inkscape:window-y="0"
+         inkscape:window-maximized="1"
+         inkscape:current-layer="layer_cube"
+         showgrid="false" />
+    <defs
+         id="defs1">
+        <rect
+             x="46.517018"
+             y="69.280913"
+             width="49.08669"
+             height="37.130235"
+             id="rect6" />
+        <rect
+             x="37.795276"
+             y="100.80697"
+             width="153.24219"
+             height="83.056039"
+             id="rect4" />
+    </defs>
+    <metadata
+         id="metadata1">
+        <rdf:RDF>
+            <cc:Work
+                 rdf:about="">
+                <dc:title>join icon</dc:title>
+                <dc:date>2024-07-23</dc:date>
+                <dc:creator>
+                    <cc:Agent>
+                        <dc:title>Mattéo Rossillol‑‑Laruelle &lt;beatussum@protonmail.com&gt;</dc:title>
+                    </cc:Agent>
+                </dc:creator>
+                <dc:language>en</dc:language>
+                <dc:description>The join official icon.</dc:description>
+                <cc:license
+                     rdf:resource="http://creativecommons.org/licenses/by-nc-sa/4.0/" />
+                <dc:publisher>
+                    <cc:Agent>
+                        <dc:title>Mattéo Rossillol‑‑Laruelle &lt;beatussum@protonmail.com&gt;</dc:title>
+                    </cc:Agent>
+                </dc:publisher>
+                <dc:source>https://github.com/beatussum/join/</dc:source>
+                <dc:rights>
+                    <cc:Agent>
+                        <dc:title>http://creativecommons.org/licenses/by-nc-sa/4.0/</dc:title>
+                    </cc:Agent>
+                </dc:rights>
+                <dc:identifier>io.github.beatussum.joi</dc:identifier>
+            </cc:Work>
+            <cc:License
+                 rdf:about="http://creativecommons.org/licenses/by-nc-sa/4.0/">
+                <cc:permits
+                     rdf:resource="http://creativecommons.org/ns#Reproduction" />
+                <cc:permits
+                     rdf:resource="http://creativecommons.org/ns#Distribution" />
+                <cc:requires
+                     rdf:resource="http://creativecommons.org/ns#Notice" />
+                <cc:requires
+                     rdf:resource="http://creativecommons.org/ns#Attribution" />
+                <cc:prohibits
+                     rdf:resource="http://creativecommons.org/ns#CommercialUse" />
+                <cc:permits
+                     rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+                <cc:requires
+                     rdf:resource="http://creativecommons.org/ns#ShareAlike" />
+            </cc:License>
+        </rdf:RDF>
+    </metadata>
+    <g
+         inkscape:groupmode="layer"
+         id="layer_cube"
+         inkscape:label="cube">
+        <g
+             id="g_cube"
+             inkscape:label="cube"
+             style="stroke-width:1.71979169;stroke-dasharray:none">
+            <rect
+                 style="fill:black;stroke-width:1.71979169;stroke-dasharray:none"
+                 id="rect_back"
+                 width="52.916668"
+                 height="52.91655"
+                 x="10"
+                 y="4.999999"
+                 inkscape:label="back" />
+            <rect
+                 style="fill:gray;stroke-width:1.71979169;stroke:black;stroke-dasharray:none;stroke-linejoin:round"
+                 id="rect_face"
+                 width="52.916668"
+                 height="52.91655"
+                 x="5"
+                 y="10"
+                 inkscape:label="face" />
+            <path
+                 style="fill:#666;stroke-width:1.71979169;stroke-dasharray:none;stroke:black;stroke-linejoin:round"
+                 d="M 5,10 10,4.9999989 H 62.916667 L 57.916667,10 H 5"
+                 id="path_top"
+                 inkscape:label="top" />
+            <path
+                 style="fill:#333;stroke-width:1.71979169;stroke:black;stroke-dasharray:none;stroke-linecap:round;paint-order:normal;stroke-linejoin:round"
+                 d="m 57.916667,62.916548 5,-4.999998 V 4.9999989 l -5,5.0000011 z"
+                 id="path_side"
+                 inkscape:label="side" />
+        </g>
+    </g>
+    <g
+         inkscape:groupmode="layer"
+         id="layer_screen"
+         inkscape:label="screen">
+        <g
+             id="g_screen"
+             inkscape:label="screen">
+            <rect
+                 style="fill:#191919;fill-opacity:1;stroke:#484848;stroke-width:1.19062523;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+                 id="rect_screen"
+                 width="47.512524"
+                 height="44.802582"
+                 x="7.7020721"
+                 y="14.056984"
+                 inkscape:label="screen" />
+            <text
+                 xml:space="preserve"
+                 id="text_title"
+                 style="font-size:12.1492px;white-space:pre;shape-inside:url(#rect4);display:inline;fill:green;fill-opacity:1;stroke:none;stroke-width:0.390509;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+                 transform="matrix(1.0163018,0,0,1.0163018,-29.193446,-73.493165)"
+                 inkscape:label="title"><tspan
+                     x="37.794922"
+                     y="111.75009"
+                     id="tspan2"><tspan
+                         style="font-weight:bold;font-family:Monospace;-inkscape-font-specification:'Monospace Bold';stroke:black"
+                         id="tspan1">@JOIN@</tspan></tspan></text>
+            <text
+                 xml:space="preserve"
+                 transform="matrix(1.1219586,0,0,1.1219586,-42.722477,-64.173548)"
+                 id="text_cli"
+                 style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:12.5772px;font-family:Monospace;-inkscape-font-specification:'Monospace Bold';white-space:pre;shape-inside:url(#rect6);display:inline;fill:green;fill-opacity:1;stroke:black;stroke-width:0.377316;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1;paint-order:normal"
+                 inkscape:label="cli"><tspan
+                     x="46.517578"
+                     y="80.309996"
+                     id="tspan3">&gt;_</tspan></text>
+        </g>
+    </g>
+</svg>
