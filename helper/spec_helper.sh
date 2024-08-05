@@ -20,7 +20,7 @@
 
 # variables #
 
-readonly TEST_DIR="${PWD}/test"
+readonly TEST_DIR="${SHELLSPEC_EXECDIR}/test"
 
 # helpers #
 
