@@ -15,7 +15,7 @@
 
 
 Describe "helpers"
-	Include "${PWD}/join"
+	Include ./join
 
 	BeforeEach setup
 	AfterEach cleanup
@@ -100,19 +100,18 @@ Describe "helpers"
 
 		It "with bad entry"
 			result() {
-				@cat <<EOF
-
-===============================================================================
-Fatal error with the following message:
-  -> \`\` does not exist
-
-${PWD}/join at line 98:
-
-		die "\\\`\${entry}\\\` does not exist"
-
-===============================================================================
-
-EOF
+				%text
+				#|
+				#|===============================================================================
+				#|Fatal error with the following message:
+				#|  -> `` does not exist
+				#|
+				#|./join at line 98:
+				#|
+				#|		die "\`${entry}\` does not exist"
+				#|
+				#|===============================================================================
+				#|
 			}
 
 			When run list

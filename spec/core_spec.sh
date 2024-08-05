@@ -15,7 +15,7 @@
 
 
 Describe "core"
-	Include "${PWD}/join"
+	Include ./join
 
 	Describe '`die()`'
 		It "wihtout message"
