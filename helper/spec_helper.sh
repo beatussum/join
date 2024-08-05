@@ -63,7 +63,7 @@ setup() {
 		create_file "${TEST_DIR}/full.d/full_${i}.txt" "$(print_content)"
 	done
 
-	cat <<- "EOF" > "${TEST_DIR}/template"
+	@cat <<- "EOF" > "${TEST_DIR}/template"
 	This file is a test template.
 
 	foo@bar.com && bar@foo.org
