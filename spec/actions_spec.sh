@@ -53,7 +53,7 @@ Describe "actions"
 		End
 
 		result() {
-			@cat <<-EOF
+			@cat <<- EOF
 			Usage: ${PWD}/join [options...] [--] [patterns...] [--] [inputs...]
 
 			Options:
@@ -103,7 +103,7 @@ Describe "actions"
 		Describe "with $1"
 			It "with not a number"
 				result() {
-					@cat <<EOF
+					@cat << EOF
 
 ===============================================================================
 Fatal error with the following message:
@@ -126,7 +126,7 @@ EOF
 
 	It "with not a correct option"
 		result() {
-			@cat <<EOF
+			@cat << EOF
 Usage: ${PWD}/join [options...] [--] [patterns...] [--] [inputs...]
 
 Options:
@@ -180,7 +180,7 @@ EOF
 		AfterRun cleanup
 
 		result() {
-			@cat <<-EOF
+			@cat <<- EOF
 			This file is a test template.
 
 			foo@bar.com && bar@foo.org
