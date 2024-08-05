@@ -40,7 +40,7 @@ Describe "actions"
 		}
 
 		It "with $1"
-			When run source "${PWD}/join" $2
+			When run script "${PWD}/join" $2
 			The output should eq "$(result)"
 			The status should be success
 		End
@@ -88,7 +88,7 @@ Describe "actions"
 		}
 
 		It "with $1"
-			When run source "${PWD}/join" $2
+			When run script "${PWD}/join" $2
 			The output should eq "$(result)"
 			The status should be success
 		End
@@ -117,7 +117,7 @@ ${PWD}/join at line 230:
 EOF
 				}
 
-				When run source "${PWD}/join" $2 foo
+				When run script "${PWD}/join" $2 foo
 				The error should eq "$(result)"
 				The status should be failure
 			End
@@ -170,7 +170,7 @@ ${PWD}/join at line 251:
 EOF
 		}
 
-		When run source "${PWD}/join" --foo
+		When run script "${PWD}/join" --foo
 		The error should eq "$(result)"
 		The status should be failure
 	End
@@ -214,7 +214,7 @@ EOF
 			#|Proin neque sapien, placerat ut sem vitae, iaculis luctus sem.` is a lorem ipsum.
 		}
 
-		When run source "${PWD}/join" \
+		When run script "${PWD}/join" \
 			--lines 0 \
 			-- \
 			HW='"Hello world!"' \
