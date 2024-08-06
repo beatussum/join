@@ -217,10 +217,10 @@ Describe "actions"
 			--lines 0 \
 			-- \
 			HW='"Hello world!"' \
-			FULLD="${TEST_DIR}/full.d" \
-			FULL="${TEST_DIR}/full.d/full_1.txt" \
+			FULLD="$(get_test_dir)/full.d" \
+			FULL="$(get_test_dir)/full.d/full_1.txt" \
 			-- \
-			"${TEST_DIR}/template"
+			"$(get_test_dir)/template"
 
 		The output should eq "$(result)"
 		The status should be success

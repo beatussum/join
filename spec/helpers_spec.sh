@@ -25,7 +25,7 @@ Describe "helpers"
 	Describe '`accumulate()`'
 		Describe "with a directory"
 			It "without file"
-				When call accumulate "${TEST_DIR}/empty.d"
+				When call accumulate "$(get_test_dir)/empty.d"
 				The output should be blank
 				The status should be success
 			End
@@ -42,21 +42,21 @@ Describe "helpers"
 					done
 				}
 
-				When call accumulate "${TEST_DIR}/full.d"
+				When call accumulate "$(get_test_dir)/full.d"
 				The output should eq "$(result)"
 				The status should be success
 			End
 		End
 
 		It "with a file"
-			When call accumulate "${TEST_DIR}/full.d/full_1.txt"
+			When call accumulate "$(get_test_dir)/full.d/full_1.txt"
 			The output should eq "$(print_content)"
 			The status should be success
 		End
 	End
 
 	It '`get_content_of()`'
-		When call get_content_of "${TEST_DIR}/full.d/full_1.txt"
+		When call get_content_of "$(get_test_dir)/full.d/full_1.txt"
 		The output should eq "$(print_content)"
 		The status should be success
 	End
@@ -64,7 +64,7 @@ Describe "helpers"
 	Describe '`list()`'
 		Describe "with directory"
 			It "without file"
-				When call list "${TEST_DIR}/empty.d"
+				When call list "$(get_test_dir)/empty.d"
 				The output should be blank
 				The status should be success
 			End
@@ -72,15 +72,15 @@ Describe "helpers"
 			It "with files"
 				result() {
 					for i in {1..5}; do
-						echo "${TEST_DIR}/full.d/empty_${i}.txt"
+						echo "$(get_test_dir)/full.d/empty_${i}.txt"
 					done
 
 					for i in {1..5}; do
-						echo "${TEST_DIR}/full.d/full_${i}.txt"
+						echo "$(get_test_dir)/full.d/full_${i}.txt"
 					done
 				}
 
-				When call list "${TEST_DIR}/full.d"
+				When call list "$(get_test_dir)/full.d"
 				The output should eq "$(result)"
 				The status should be success
 			End
@@ -93,8 +93,8 @@ Describe "helpers"
 		End
 
 		It "with file"
-			When call list "${TEST_DIR}/full.d/empty_1.txt"
-			The output should eq "${TEST_DIR}/full.d/empty_1.txt"
+			When call list "$(get_test_dir)/full.d/empty_1.txt"
+			The output should eq "$(get_test_dir)/full.d/empty_1.txt"
 			The status should be success
 		End
 

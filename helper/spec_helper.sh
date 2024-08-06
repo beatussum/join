@@ -24,6 +24,10 @@ readonly TEST_DIR="${SHELLSPEC_EXECDIR}/test"
 
 # helpers #
 
+get_test_dir() {
+	echo "${TEST_DIR}.$$"
+}
+
 print_content() {
 	@cat <<- EOF
 	Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -56,14 +60,14 @@ set_options() {
 }
 
 setup() {
-	@mkdir -p "${TEST_DIR}"/{empty,full}.d
+	@mkdir -p "$(get_test_dir)"/{empty,full}.d
 
 	for i in {1..5}; do
-		create_file "${TEST_DIR}/full.d/empty_${i}.txt"
-		create_file "${TEST_DIR}/full.d/full_${i}.txt" "$(print_content)"
+		create_file "$(get_test_dir)/full.d/empty_${i}.txt"
+		create_file "$(get_test_dir)/full.d/full_${i}.txt" "$(print_content)"
 	done
 
-	@cat <<- "EOF" > "${TEST_DIR}/template"
+	@cat <<- "EOF" > "$(get_test_dir)/template"
 	This file is a test template.
 
 	foo@bar.com && bar@foo.org
@@ -77,7 +81,7 @@ setup() {
 }
 
 cleanup() {
-	@rm -r "${TEST_DIR}"
+	@rm -r "$(get_test_dir)"
 }
 
 ####################
