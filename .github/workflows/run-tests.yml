@@ -35,13 +35,13 @@ jobs:
         working-directory: join
 
       - name: Upload coverage artifact
-        uses: actions/upload-artifact@v4.4.0
+        uses: actions/upload-artifact@v4.4.1
         with:
           name: coverage
           path: join/build/coverage
 
       - name: Upload report artifact
-        uses: actions/upload-artifact@v4.4.0
+        uses: actions/upload-artifact@v4.4.1
         with:
           name: report
           path: join/build/report
