@@ -18,7 +18,7 @@ jobs:
         run: make
 
       - name: Run shellcheck with reviewdog
-        uses: reviewdog/action-shellcheck@v1.30.0
+        uses: reviewdog/action-shellcheck@v1.31.0
         with:
           path: build
           pattern: join
